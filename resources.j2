@@ -1,0 +1,12 @@
+global:
+  resources:
+  {%- for key,parent_dict_item in data.items() %}
+    {{ key }}:
+      requests:
+      {%- for key2, nested_value in parent_dict_item.items() %}
+        {{ key2 }}: {{ nested_value }}
+      {%- endfor %}
+      limits:
+        cpu: 2
+        memory: 4Gi
+  {% endfor %}
